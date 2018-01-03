@@ -58,22 +58,26 @@ func Get() (e Env) {
 	return
 }
 
-/*
-STAFF_WEB_HOST=localhost
-STAFF_WEB_PORT=8080
-STAFF_GRPC_PORT=8081
-STAFF_DATABASE_HOST=0.0.0.0
-STAFF_DATABASE_PORT=3306
-STAFF_DATABASE_NAME=socomd
-STAFF_DATABASE_USER=root
-STAFF_DATABASE_PASS=
-STAFF_JWT_SECRET=myshlong
+func (e Env) String() string {
+	return `Environment Variables
+STAFF:
+  STAFF_WEB_HOST=` + e.Staff.WebHost + `
+  STAFF_WEB_PORT=` + e.Staff.WebPort + `
+  STAFF_GRPC_PORT=` + e.Staff.GrpcPort + `
+  STAFF_DATABASE_HOST=` + e.Staff.Database.Host + `
+  STAFF_DATABASE_PORT=` + e.Staff.Database.Port + `
+  STAFF_DATABASE_NAME=` + e.Staff.Database.Name + `
+  STAFF_DATABASE_USER=` + e.Staff.Database.User + `
+  STAFF_DATABASE_PASS=` + e.Staff.Database.Pass + `
+  STAFF_JWT_SECRET=` + e.Staff.JWTSecret + `
 
-TSBOT_TS_HOST=ts.socomd.com \
-TSBOT_TS_PORT=10099 \
-TSBOT_TS_USER=zanven \
-TSBOT_TS_PASS=RsGElP6o \
-TSBOT_LOGFILE= \
-TSBOT_GRPC_PORT=9200 \
-TSBOT_GRPC_HOST=localhost \
-*/
+TSBOT:
+  TSBOT_TS_HOST=` + e.Tsbot.TSHost + `
+  TSBOT_TS_PORT=` + e.Tsbot.TSPort + `
+  TSBOT_TS_USER=` + e.Tsbot.TSUser + `
+  TSBOT_TS_PASS=` + e.Tsbot.TSPass + `
+  TSBOT_LOGFILE=` + e.Tsbot.LogFile + `
+  TSBOT_GRPC_HOST=` + e.Tsbot.GrpcHost + `
+  TSBOT_GRPC_PORT=` + e.Tsbot.GrpcPort + `
+`
+}
